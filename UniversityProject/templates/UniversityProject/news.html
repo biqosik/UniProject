@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'main.html' %}
+{% load embed_video_tags %}
+{% block content %}
+  <body>
+    <main class="layout layout--4">
+      <div class="news__container">
+          {% for new in news %}
+              <div class="news">
+              <div class="news__top">
+              <h3>{{ new.topic }} <hr>
+                  {{ new.info }}</h3>
+              </div>
+                  {% if new.video is not null %}
+                    <div class="house__youtube">
+                    {% video new.video 'tiny' %}
+                    {% endif %}
+                </div>
+              </div>
+          {% endfor %}
+      </div>
+    </main>
+
+  {% endblock content %}
