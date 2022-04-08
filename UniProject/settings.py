@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-n$72-wt39tm-r3qwojdh(-h7nmntd0*d8uuc368evdv&yczfx0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'https://universityprojectbed.herokuapp.com/', '127.0.0.1:8000', '*']
+ALLOWED_HOSTS = ['localhost', 'https://universityprojectbed.herokuapp.com/', '127.0.0.1:8000',]
 
 
 # Application definition
@@ -132,8 +132,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-MEDIA_ROOT = BASE_DIR /  'static/images'
+MEDIA_ROOT = BASE_DIR / 'static/images'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
