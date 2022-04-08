@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-n$72-wt39tm-r3qwojdh(-h7nmntd0*d8uuc368evdv&yczfx0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'https://universityprojectbed.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost', 'https://universityprojectbed.herokuapp.com/', '127.0.0.1:8000', '*']
 
 
 # Application definition
@@ -138,3 +138,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+
+ADMINS = [('John', 'flisek1993@gmail.com'), ('Mary', 'mary@example.com')]
