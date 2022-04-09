@@ -56,6 +56,9 @@ class Blockchain(models.Model):
     def __str__(self):
         return self.short
 
+    class Meta:
+        ordering = ['pk']
+
 
 class News(models.Model):
     topic = models.CharField(max_length=256, null=True)
