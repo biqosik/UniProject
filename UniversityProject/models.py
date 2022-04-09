@@ -66,7 +66,8 @@ class News(models.Model):
         return self.topic
 
 class CurrencyStock(models.Model):
-    currency = models.CharField(max_length=256, null=True)
+    currency = models.CharField(max_length=255, null=True)
+    yes = models.CharField(max_length=255, null=True)
 
     def __str__(self):
-        return self.stock
+        return self.yes
