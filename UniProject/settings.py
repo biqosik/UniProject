@@ -122,17 +122,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-STATIC_HOST = "https://universityprojectbed.herokuapp.com/" if not DEBUG else""
 django_heroku.settings(locals())
-MEDIA_URL = 'static/images/'
-STATIC_URL = STATIC_HOST + "/static/"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_URL = '/images/'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
