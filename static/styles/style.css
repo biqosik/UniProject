@@ -494,7 +494,8 @@ a {
 
   }
 
-  .layout--3 > .container > div:nth-child(2) {
+  .layout--3 > .container > div:nth-child(2),
+  .layout--5 > .container > div:nth-child(2){
     flex-basis: 100%;
   }
 }
@@ -1386,8 +1387,16 @@ Navigation Bar Menu
   width: 50%;
   margin: auto;
 }
+.blockchain__container{
+  max-width: 120rem;
+  width: 80%;
+  margin: auto;
+
+}
+
 @media screen and (max-width: 800px) {
-  .news__container {
+  .news__container,
+  .blockchain__container{
     width: 100%;
 
   }
