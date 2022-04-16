@@ -1,22 +1,22 @@
 {% extends 'main.html' %}
 
 {% block content %}
-        <main class="profile-page layout layout--2">
-    <div class="containerblock">
-    <div class="cryptoname">
-        <div class="cryptoname__top">
-            <div class="cryptoname__topLeft">
-                <img src="{{ cryptocurrency.image.url}}" />
-            <h3>
-    {{ cryptocurrency.cryptocurrency }}</h3></div>
-        </div>
-    </div>
-                          <div class="room__conversation">
-                                  <div class="thread__details">
-                                      {% include path %}
-                                      {% include path2 %}</div>
-                          </div>
-    </div>
+    <main class="profile-page layout layout--2">
+        <div class="containerblock">
+            <div class="cryptoname">
+                <div class="cryptoname__top">
+                    <div class="cryptoname__topLeft">
+                        <img src="{{ cryptocurrency.image.url}}" />
+                        <h3>
+                            {{ cryptocurrency.cryptocurrency }}</h3></div>
+                </div>
+            </div>
+            <div class="feed__content">
 
-        </main>
+                {% include path2 %}
+                <div class="feed__chart">
+                    {% include path %}</div>
+            </div>
+        </div>
+    </main>
 {% endblock %}

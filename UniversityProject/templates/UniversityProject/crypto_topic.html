@@ -1,26 +1,26 @@
 <div class="topics">
-          <div class="topics__header">
-            <h2>Browse Crypto</h2>
-          </div>
-          <ul class="topics__list">
+    <div class="topics__header">
+        <h2>Browse Crypto</h2>
+    </div>
+    <ul class="topics__list">
+        <li>
+            <a href="{% url 'crypto-page' %}" class="active">All <span>{{ blockch.count }}</span></a>
+        </li>
+        {% for crypto in page_obj %}
             <li>
-              <a href="{% url 'crypto-page' %}" class="active">All <span>{{ blockch.count }}</span></a>
-            </li>
-              {% for crypto in page_obj %}
-            <li>
-              <a href="{% url 'cryptocurrency' crypto.id %}"><img src="{{ crypto.image.url}}" />{{ crypto.cryptocurrency }} </a>
+                <a href="{% url 'cryptocurrency' crypto.id %}"><img src="{{ crypto.image.url}}" />{{ crypto.cryptocurrency }} </a>
 
             </li>
-              {% endfor %}
-          </ul>
-<div class="paginator">
-    <form method="GET">
-        <select class="paginator__button" name="paginate_by" id="">
-            <option value="3">Show Less</option>
-            <option value="100">Show All</option>
-        </select>
-        <input class="paginator__button" type="submit" value="Show">
-    </form>
+        {% endfor %}
+    </ul>
+    <div class="paginator">
+        <form method="GET">
+            <select class="paginator__button" name="paginate_by" id="">
+                <option value="3">Show Less</option>
+                <option value="100">Show All</option>
+            </select>
+            <input class="paginator__button" type="submit" value="Show">
+        </form>
+    </div>
+
 </div>
-
-        </div>

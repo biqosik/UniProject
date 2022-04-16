@@ -3,36 +3,39 @@ import pandas_datareader as pdr
 import datetime as dt
 import plotly.graph_objects as go
 
-def get_data():
-    crypto_currency = "BTC"
-    against_currency = "GBP"
+def al():
+    while True:
 
-    start = dt.datetime(2016, 1, 1)
-    end = dt.datetime.now()
+        try:
+            a = float(input('Podaj 1 liczbę: '))
+            b = float(input('Podaj 2 liczbę: '))
+            break;
+        except:
+            print('Podaj poprawne liczby!!!')
+            al()
 
-    data = pdr.DataReader(f'{crypto_currency}-{against_currency}', 'yahoo', start, end)
 
-    trace1 = {
-        'x': data.index,
-        'open': data.Open,
-        'close': data.Close,
-        'high': data.High,
-        'low': data.Low,
-        'type': 'candlestick',
-        'name': 'BBAS3',
-        'showlegend': False
-    }
 
-    data = [trace1]
-    # Config graph layout
-    layout = go.Layout({
-        'title': {
-            'text': 'Bitcoin',
-            'font': {
-                'size': 15
-            }
-        }
-    })
 
-    fig = go.Figure(data=data, layout=layout)
-    fig.show()
+    doz = ['podziel', 'pomnoz', 'dodaj', 'odejmij', ]
+    print('Dozwolone: ' + str(doz))
+    c = input('Wybierz jedna opcje z dozwolonych: ')
+    if c in doz:
+        if c == 'podziel':
+            p = float(a)/float(b)
+            print ('Wynik jest rowny: ' + str(round(p, 2)))
+        elif c == 'pomnoz':
+            po = float(a)*float(b)
+            print ('Wynik jest rowny: ' + str(round(po, 2)))
+        elif c == 'dodaj':
+            dod = float(a)+float(b)
+            print('Wynik jest rowny: ' + str(dod))
+        elif c == 'odejmij':
+            od = float(a)-float(b)
+            print('Wynik jest rowny: ' + str(od))
+    else:
+        print('Podaj poprawna opcje!')
+        al()
+gas = input('Pi: ')
+if gas == '1':
+    al()

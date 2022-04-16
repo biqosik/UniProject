@@ -1,11 +1,28 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
-    <main class="profile-page layout layout--4">
-      <div class="container">
-        <!-- Home Start -->
+    <div class="container">
+        <div class="home">
+            <div class="home__header">
+                <div class="dlay">
+                    <div class="cube">
+                        <div class="s1"><img src="{% static "images/logo.jpg" %}"></div>
+                        <div class="s2"><img src="{% static "images/logo.jpg" %}"></div>
+                        <div class="s3"><img src="{% static "images/logo.jpg" %}"></div>
+                        <div class="s4"><img src="{% static "images/logo.jpg" %}"></div>
+                        <div class="s5"><img src="{% static "images/logo.jpg" %}"></div>
+                        <div class="s6"><img src="{% static "images/logo.jpg" %}"></div>
+                    </div>
+                </div>
+                <h2>Welcome to Blockchain Buddies  </h2>
+            </div>
+            <p>Please remember that everything that you will find on this site can be found elsewhere, but I will try to persuade you with much less information and simpler words why you should learn more about blockchain and other technologies on this website.</p>
+            <p>You can also check information about specific cryptocurrencies on the website after you will register so do not wait and register right now!!!</p>
+            <p>After your registration you will be able to join our great community and speak about any problems or trends with the people around the world.</p>
+            <p>So Invite your friends and teammates to this wonderful world of technology.</p>
+            <a href="{% url 'login' %}"><h2>Join Today</h2></a>
 
-        <!-- Home End -->
+        </div>
 
-      </div>
-    </main>
+    </div>
 {% endblock content %}

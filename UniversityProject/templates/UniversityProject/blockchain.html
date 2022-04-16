@@ -1,20 +1,126 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
     <main class="profile-page layout layout--4">
-      <div class="container">
-        <!-- Home Start -->
-        <div class="house">
-          <div class="house__top">
-            <div>
-              <h3>Get to understand more about Blockchain Technology</h3>
-            </div>
-          </div>
-            <div class="house__youtube">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SSo_EIwHSd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            </div>
-        </div>
-        <!-- Home End -->
+        <div class="container">
+            <div class="feed__content">
+                <div class="feed__blockchain">
+                    <div>
+                        <h2>Get to understand more about Blockchain Technology</h2>
+                    </div>
+                </div>
 
-      </div>
+                <div class="feed__info">
+                    <div>
+                        <h3>What is a Blockchain?</h3>
+                        <h3>Why it was created?</h3>
+                        <h3>Why do we even use it?</h3>
+                    </div>
+                    <div>
+                        <img src="{% static "images/blockchain.png" %}">
+                    </div>
+                </div>
+                <h3>Let’s start with the first question. What is a Blockchain?</h3>
+                <p>‘A blockchain is a distributed database that is shared among the nodes of a computer network. As a
+                    database, a blockchain stores information electronically in digital format. Blockchains are best known
+                    for their crucial role in cryptocurrency systems for maintaining a secure and decentralized record of
+                    transactions. The innovation with a blockchain is that it guarantees the fidelity and security of a
+                    record of data and generates trust without the need for a trusted third party.’ [1]</p>
+
+                <p>But what does it exactly mean for non-technical person?
+                    Let’s say that you are trying to send some information like a letter through inside the enveloped but in
+                    this case our envelope going to be the block. You’ve sent the letter through normal royal mail but how
+                    do you exactly know that nobody in the middle of the transport will not open and check what is inside?
+                    In old dates the people used crest stamps to make sure that the letter was not opened or have any leaks
+                    when trying to open it unauthorized. It’s very similar with Blockchain, when in the block there is a
+                    special hash which may be represented by that stamp so it’s known that nobody never changed any content
+                    inside that block. In the meantime, it’s creating other blocks with the stamp but they all have their
+                    own stamp so you always know that the first one was never opened and your block have transferred from
+                    point A to B fully secured and never opened in the meantime. If in the middle some ‘hacker’ would get
+                    that block into his hand than still he is not able to open that block as sender and addresser was
+                    changed in the meantime and because computers known what should be at the end and the beginning it can
+                    easily identify that there were some changes in the middle. With that knowledge person (or group of
+                    people) using name Satoshi Nakamoto went through that idea and created first globally known
+                    cryptocurrency named Bitcoin. The identity of Satoshi Nakamoto remains unknown to this date.</p>
+
+                <h3>So, we have simple knowledge about what is a blockchain. But why it was created?</h3>
+
+                <p>‘Cryptographer David Chaum first proposed a blockchain-like protocol in his 1982 dissertation "Computer
+                    Systems Established, Maintained, and Trusted by Mutually Suspicious Groups." Further work on a
+                    cryptographically secured chain of blocks was described in 1991 by Stuart Haber and W. Scott Stornetta.
+                    They wanted to implement a system wherein document timestamps could not be tampered with. In 1992,
+                    Haber, Stornetta, and Dave Bayer incorporated Merkle trees into the design, which improved its
+                    efficiency by allowing several document certificates to be collected into one block. Under their company
+                    Surety, their document certificate hashes have been published in The New York Times every week since
+                    1995. </p>
+                <p>Nakamoto improved the design in an important way using a Hashcash-like method to timestamp blocks
+                    without requiring them to be signed by a trusted party and introducing a difficulty parameter to
+                    stabilize the rate at which blocks are added to the chain.[4] The design was implemented the following
+                    year by Nakamoto as a core component of the cryptocurrency bitcoin, where it serves as the public ledger
+                    for all transactions on the network.[3]
+                    In August 2014, the bitcoin blockchain file size, containing records of all transactions that have
+                    occurred on the network, reached 20 GB (gigabytes). In January 2015, the size had grown to almost 30 GB,
+                    and from January 2016 to January 2017, the bitcoin blockchain grew from 50 GB to 100 GB in size. The
+                    ledger size had exceeded 200 GB by early 2020.</p>
+
+                <p>The history shows that this path of technology will be developed more widely when more users will get to
+                    understand benefits of this kind applied science.</p>
+                <div class="feed__video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SSo_EIwHSd4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3>But in the end why do we need it? For what for we can use it? How normal person can use it in their
+                    life?</h3>
+
+                <p>Blockchain technology can be integrated into multiple areas. The primary use of blockchains is as a
+                    distributed ledger for cryptocurrencies such as bitcoin; there were also a few other operational
+                    products that had matured from proof of concept by late 2016. As of 2016, some businesses have been
+                    testing the technology and conducting low-level implementation to gauge blockchain's effects on
+                    organizational efficiency in their back office.</p>
+
+                <h3>Cryptocurrencies:</h3>
+                <p>Most cryptocurrencies use blockchain technology to record transactions. For example, the bitcoin network
+                    and Ethereum network are both based on blockchain
+                    Governments have mixed policies on the legality of their citizens or banks owning cryptocurrencies.
+                    China implements blockchain technology in several industries including a national digital currency which
+                    launched in 2020.[79] To strengthen their respective currencies, Western governments including the
+                    European Union and the United States have initiated similar projects.<p>
+
+                <h3>Financial services</h3>
+
+                <p>According to Reason, many banks have expressed interest in implementing distributed ledgers for use in
+                    banking and are cooperating with companies creating private blockchains, and according to a September
+                    2016 IBM study, this is occurring faster than expected.
+                    Banks are interested in this technology not least because it has the potential to speed up back office
+                    settlement systems. Moreover, as the blockchain industry has reached early maturity institutional
+                    appreciation has grown that it is, practically speaking, the infrastructure of a whole new financial
+                    industry, with all the implications which that entails.
+                    Banks such as UBS are opening new research labs dedicated to blockchain technology in order to explore
+                    how blockchain can be used in financial services to increase efficiency and reduce costs.
+                    Berenberg, a German bank, believes that blockchain is an "overhyped technology" that has had a large
+                    number of "proofs of concept", but still has major challenges, and very few success stories.’ [2]</p>
+
+                <p>And many more usages in Games, Supply Chains etc.
+                    This is just a small portion of the information that you can get looking through internet to let you
+                    understand Blockchain Technology and why it may be very beneficial in the future.
+                    With this kind of information, I hope that you will be able to get your own view of the blockchain and
+                    get deeper and maybe start learning and working within those technology structure.</p>
+
+                <h3>GOOD LUCK!!!</h3>
+
+
+                <p>Source:</p>
+                <hr>
+                <p>
+                    [1] Blockchain: https://www.investopedia.com/terms/b/blockchain.asp</p>
+                <p>[2] Wikipedia: https://en.wikipedia.org/wiki/Blockchain</p>
+
+                <div class="house__youtube">
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+
     </main>
 {% endblock content %}

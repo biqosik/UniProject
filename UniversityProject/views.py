@@ -12,6 +12,10 @@ import datetime as dt
 import plotly.graph_objects as go
 from datetime import timezone
 from django.core.paginator import Paginator
+from pathlib import Path
+import os
+
+
 
 def loginPage(request):
     page = 'login'
@@ -44,15 +48,15 @@ def logoutUser(request):
 def registerPage(request):
     form = UserCForm
     if request.method == 'POST':
-            form = UserCForm(request.POST)
-            if form.is_valid():
-                user = form.save(commit=False)
-                user.username = user.username.lower()
-                user.save()
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.error(request, 'An error occurred')
+        form = UserCForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occurred')
 
     return render(request, 'UniversityProject/login_register.html', {'form':form})
 
@@ -116,7 +120,6 @@ def create_room(request):
     return render(request, 'UniversityProject/room_form.html', context)
 
 def updateRoom(request, pk):
-    blockchain = Blockchain.objects.all()
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
     topics = Topic.objects.all()
@@ -132,7 +135,7 @@ def updateRoom(request, pk):
 
         return redirect('conversation')
 
-    context = {'form': form, 'topics':topics, 'room':room, 'blockchain':blockchain}
+    context = {'form': form, 'topics':topics, 'room':room}
     return render(request, 'UniversityProject/room_form.html', context)
 
 @login_required(login_url='login')
@@ -182,9 +185,17 @@ def activityPage(request):
     return render(request, 'UniversityProject/activity.html', {'room_messages':room_messages, 'blockchain':blockchain})
 
 def blockchainFeed(request, pk):
+    BASE_DIR = Path(__file__).resolve().parent.parent
     cryptocurrency = Blockchain.objects.get(id=pk)
     blockchain = Blockchain.objects.all()[0:4]
     diff = checkDiff(cryptocurrency.timeframe)
+    checkpath = BASE_DIR / 'UniversityProject/templates/UniversityProject/CryptoFeed' / (cryptocurrency.short + '.html')
+    say =checkpath.exists()
+    if say == False:
+        file = open(cryptocurrency.short + '.html', 'w')
+        file.close()
+        os.replace(BASE_DIR / 'USDC.html', checkpath)
+    checkpath.touch(exist_ok=True)
     if diff > 28800:
         get_data(cryptocurrency.short)
         cryptocurrency.timeframe = dt.datetime.now(timezone.utc)
@@ -223,37 +234,37 @@ def checkDiff(timedata):
     return diff
 
 def get_data(curr):
-            crypto_currency = curr
-            against_currency = 'GBP'
+    crypto_currency = curr
+    against_currency = 'GBP'
 
-            start = dt.datetime(2016, 1, 1)
-            end = dt.datetime.now()
+    start = dt.datetime(2016, 1, 1)
+    end = dt.datetime.now()
 
-            data = pdr.DataReader(f'{crypto_currency}-{against_currency}', 'yahoo', start, end)
+    data = pdr.DataReader(f'{crypto_currency}-{against_currency}', 'yahoo', start, end)
 
-            trace1 = {
-                'x': data.index,
-                'open': data.Open,
-                'close': data.Close,
-                'high': data.High,
-                'low': data.Low,
-                'type': 'candlestick',
-                'name': 'Crypto',
-                'showlegend': False
+    trace1 = {
+        'x': data.index,
+        'open': data.Open,
+        'close': data.Close,
+        'high': data.High,
+        'low': data.Low,
+        'type': 'candlestick',
+        'name': 'Crypto',
+        'showlegend': False
+    }
+
+    data = [trace1]
+    # Config graph layout
+    layout = go.Layout({
+        'title': {
+            'text': str(curr) +' ' +  against_currency,
+            'font': {
+                'size': 15
             }
+        }
+    })
 
-            data = [trace1]
-            # Config graph layout
-            layout = go.Layout({
-                'title': {
-                    'text': str(curr) +' ' +  against_currency,
-                    'font': {
-                        'size': 15
-                    }
-                }
-            })
-
-            path = 'UniversityProject/templates/UniversityProject/Crypto/' + str(curr) + '.html'
-            fig = go.Figure(data=data, layout=layout)
-            fig.write_html(path)
+    path = 'UniversityProject/templates/UniversityProject/Crypto/' + str(curr) + '.html'
+    fig = go.Figure(data=data, layout=layout)
+    fig.write_html(path)
 
