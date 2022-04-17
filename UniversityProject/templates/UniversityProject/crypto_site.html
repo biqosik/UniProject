@@ -10,6 +10,16 @@
             {% include 'UniversityProject/crypto_topic.html' %}
 
             <div class="feed">
+
+                {% for crypto in page_obj %}
+                    <div class="crypto__content">
+                        <div class="cryptosite">
+                            <a href={% url 'cryptocurrency' crypto.id%}>
+                                <img src="{{ crypto.image.url}}" />
+                                {{ crypto.cryptocurrency }} </a>
+                            <h1>{{ crypto.description }}</h1>
+                        </div></div>
+                {% endfor %}
                 <div class="mobile-menu">
                     <div class="mobile-menuItems">
                         <div class="paginator">
@@ -23,15 +33,6 @@
                         </div>
                     </div>
                 </div>
-                {% for crypto in page_obj %}
-                    <div class="crypto__content">
-                        <div class="cryptosite">
-                            <a href={% url 'cryptocurrency' crypto.id%}>
-                                <img src="{{ crypto.image.url}}" />
-                                {{ crypto.cryptocurrency }} </a>
-                            <h1>{{ crypto.description }}</h1>
-                        </div></div>
-                {% endfor %}
             </div>
         </div>
     </main>
