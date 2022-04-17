@@ -10,7 +10,7 @@
             {% include 'UniversityProject/crypto_topic.html' %}
 
             <div class="feed">
-                {% for crypto in page_obj %}
+                <div class="mobile-menu">
                     <div class="mobile-menuItems">
                         <div class="paginator">
                             <form method="GET">
@@ -22,6 +22,8 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                {% for crypto in page_obj %}
                     <div class="crypto__content">
                         <div class="cryptosite">
                             <a href={% url 'cryptocurrency' crypto.id%}>
