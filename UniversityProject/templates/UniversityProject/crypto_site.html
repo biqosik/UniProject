@@ -11,6 +11,17 @@
 
             <div class="feed">
                 {% for crypto in page_obj %}
+                    <div class="mobile-menuItems">
+                        <div class="paginator">
+                            <form method="GET">
+                                <select class="paginator__button" name="paginate_by" id="">
+                                    <option value="3">Show Less</option>
+                                    <option value="100">Show All</option>
+                                </select>
+                                <input class="paginator__button" type="submit" value="Show">
+                            </form>
+                        </div>
+                    </div>
                     <div class="crypto__content">
                         <div class="cryptosite">
                             <a href={% url 'cryptocurrency' crypto.id%}>
